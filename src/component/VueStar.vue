@@ -17,30 +17,21 @@ export default {
     animate: String,
     color: String,
     active: Boolean,
-    unCancel: Boolean,
     index: Number
   },
   methods: {
     toggle () {
-      if (this.unCancel) {
-        if (!this.active) {
-          this.active = !this.active
-          this.toggleAnimate = !this.toggleAnimate
-          this.toggleColor = !this.toggleColor
-          this.$emit('toggle', this.active, this.index)
-        }
-      } else {
-        this.active = !this.active
-        this.toggleAnimate = !this.toggleAnimate
-        this.toggleColor = !this.toggleColor
-        this.$emit('toggle', this.active, this.index)
-      }
+      this.toggleActive = !this.active
+      this.toggleAnimate = !this.toggleAnimate
+      this.toggleColor = !this.toggleColor
+      this.$emit('toggle', this.toggleActive, this.index)
     }
   },
   data () {
     return {
       toggleAnimate: false,
-      toggleColor: false
+      toggleColor: false,
+      toggleActive: false
     }
   },
   computed: {
