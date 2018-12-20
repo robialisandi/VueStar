@@ -46,10 +46,10 @@ export default {
   },
   computed: {
     AnimateClass () {
-      return this.toggleAnimate || this.active ? this.animate : ''
+      return this.active ? this.animate : ''
     },
     ColorValue () {
-      return this.toggleColor || this.active ? this.color : ''
+      return this.active ? this.color : ''
     }
   },
   mounted () {
