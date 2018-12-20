@@ -1,5 +1,5 @@
 <template>
-  <div class="VueStar"> 
+  <div class="VueStar">
     <div class="VueStar__ground">
       <div class="VueStar__icon" @click="toggle" :class="AnimateClass" :style='{color:ColorValue}'>
         <slot name="icon"></slot>
@@ -18,22 +18,22 @@ export default {
     color: String,
     active: Boolean,
     unCancel: Boolean,
-    index: Number,
+    index: Number
   },
   methods: {
     toggle () {
-      if(this.unCancel){
-        if(!this.active){
+      if (this.unCancel) {
+        if (!this.active) {
           this.active = !this.active
           this.toggleAnimate = !this.toggleAnimate
           this.toggleColor = !this.toggleColor
-          this.$emit('toggle',this.active,this.index);
+          this.$emit('toggle', this.active, this.index)
         }
-      }else{
+      } else {
         this.active = !this.active
         this.toggleAnimate = !this.toggleAnimate
         this.toggleColor = !this.toggleColor
-        this.$emit('toggle',this.active,this.index);
+        this.$emit('toggle', this.active, this.index)
       }
     }
   },
@@ -45,10 +45,10 @@ export default {
   },
   computed: {
     AnimateClass () {
-      return this.toggleAnimate||this.active ? this.animate : ''
+      return this.toggleAnimate || this.active ? this.animate : ''
     },
     ColorValue () {
-      return this.toggleColor||this.active ? this.color : ''
+      return this.toggleColor || this.active ? this.color : ''
     }
   },
   mounted () {
