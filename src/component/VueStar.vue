@@ -15,28 +15,40 @@ export default {
   name: 'VueStar',
   props: {
     animate: String,
-    color: String
+    color: String,
+    active: Boolean,
+    unCancel: Boolean,
+    index: Number,
   },
   methods: {
     toggle () {
-      this.active = !this.active
-      this.toggleAnimate = !this.toggleAnimate
-      this.toggleColor = !this.toggleColor
+      if(this.unCancel){
+        if(!this.active){
+          this.active = !this.active
+          this.toggleAnimate = !this.toggleAnimate
+          this.toggleColor = !this.toggleColor
+          this.$emit('toggle',this.active,this.index);
+        }
+      }else{
+        this.active = !this.active
+        this.toggleAnimate = !this.toggleAnimate
+        this.toggleColor = !this.toggleColor
+        this.$emit('toggle',this.active,this.index);
+      }
     }
   },
   data () {
     return {
-      active: false,
       toggleAnimate: false,
       toggleColor: false
     }
   },
   computed: {
     AnimateClass () {
-      return this.toggleAnimate ? this.animate : ''
+      return this.toggleAnimate||this.active ? this.animate : ''
     },
     ColorValue () {
-      return this.toggleColor ? this.color : ''
+      return this.toggleColor||this.active ? this.color : ''
     }
   },
   mounted () {
